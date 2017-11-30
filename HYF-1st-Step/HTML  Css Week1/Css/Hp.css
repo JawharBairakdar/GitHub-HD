@@ -1,0 +1,279 @@
+/* The Hard New Parts */
+a
+{
+  text-decoration: none;
+  color:inherit;
+  width:100%;
+}
+.container nav
+{
+  width:100%;
+  height:100%;
+  background-color:rgba(200,200,200,.5);
+}
+.container nav ul
+{
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+.container nav #rightNav
+{
+  width:50%;
+  float:right
+}
+.container nav #leftNav
+{
+  width:50%;
+  float:left
+}
+
+/* Styling Text */
+.container nav #rightNav .rightNav a > *, /* Becuase Of It Can't Be At Blocked <a> Tag (just in this case) */
+.container nav #leftNav .leftNav a > *
+{
+  display:block;
+  font: 20px/30px "arial","FontAwesome";
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 2px rgba(255,255,255,.5);
+  background-color:#000;
+  color:transparent;
+}
+/* End Styling Text */
+
+
+.container nav .rightNav
+{
+  width:30px;
+  border:1px solid #CCC;
+  border-radius:15px;
+  overflow:hidden;
+  background-color: #fff;
+  margin: 0 5px 5px 5px;
+}
+.container nav .rightNav:nth-child(1)
+{
+  text-indent:8px;
+  transform: translate(100px,5px)
+}
+.container nav .rightNav:nth-child(1) i:before
+{
+  content:"\f007";
+  margin: 0 10px 0 0
+}
+.container nav .rightNav:nth-child(1) i:after
+{
+  content:"jawhar";
+  font:600 15px/20px "arial";
+}
+.container nav .rightNav:nth-child(2)
+{
+  text-indent:2px;
+  transform: translate(90px,5px)
+}
+.container nav .rightNav:nth-child(2) i:before
+{
+  content:"\f19d";
+    margin: 0 10px 0 0
+}
+.container nav .rightNav:nth-child(2) i:after
+{
+  content:"jawhar";
+  font:600 15px/20px "arial";
+}
+.container nav .rightNav:nth-child(3)
+{
+  text-indent:5px;
+  transform: translate(65px,6px)
+}
+.container nav .rightNav:nth-child(3) i:before
+{
+  content:"\f277";
+    margin: 0 10px 0 0
+}
+.container nav .rightNav:nth-child(3) i:after
+{
+  content:"jawhar";
+  font:600 15px/20px "arial";
+}
+li.rightNav:hover
+{
+  width:100px;
+  transition: all .9s ease-in-out
+}
+
+
+/*
+f007
+f19d
+f277
+
+
+*/
+
+.container nav .leftNav
+{
+  width:30px;
+  border:1px solid #CCC;
+  border-radius:15px;
+  overflow:hidden;
+  background-color: #fff;
+  margin: 0 5px 5px 5px;
+  direction: 
+}
+.container nav .leftNav:nth-child(1)
+{
+  text-indent:8px;
+  transform: translate(283px,5px)
+}
+.container nav .leftNav:nth-child(1) i:before
+{
+  content:"\f007";
+  margin: 0 10px 0 0
+}
+.container nav .leftNav:nth-child(1) i:after
+{
+  content:"jawhar";
+  font:600 15px/20px "arial";
+}
+.container nav .leftNav:nth-child(2)
+{
+  text-indent:2px;
+  transform: translate(90px,5px)
+}
+.container nav .leftNav:nth-child(2) i:before
+{
+  content:"\f19d";
+    margin: 0 10px 0 0
+}
+.container nav .leftNav:nth-child(2) i:after
+{
+  content:"jawhar";
+  font:600 15px/20px "arial";
+}
+.container nav .leftNav:nth-child(3)
+{
+  text-indent:5px;
+  transform: translate(65px,6px)
+}
+.container nav .leftNav:nth-child(3) i:before
+{
+  content:"\f277";
+    margin: 0 10px 0 0
+}
+.container nav .leftNav:nth-child(3) i:after
+{
+  content:"jawhar";
+  font:600 15px/20px "arial";
+}
+li.leftNav:hover
+{
+  width:100px;
+  transition: all .9s ease-in-out
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.container nav {
+  padding:0;
+  display:block;
+  position:relative;
+  background-color:rgba(200,200,200,.5);
+  width:75%;
+  height:100%;
+  margin:auto
+}
+#rightNav {
+  position:absolute;
+  
+}
+#rightNav a, #leftNav a {
+  width: 100%;
+  display:block;
+  text-decoration:none;
+  color:transparent;
+}
+.rightNav, .leftNav {
+  list-style:none;
+/*   text-align:center; */
+/*   padding-left:15px; */
+/*  background-color:#EEE;
+  border:1px solid #CCC;
+  border-radius:15px;
+  width:30px;
+  overflow:hidden;
+  transition:all .9s ease-in-out;
+}
+.rightNav i {
+  /* The Transparting Begains */
+  /*text-shadow: 1px 1px 2px rgba(255,255,255,.8);
+  background-color: #000;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  /* Styling */
+  /*text-indent:15px;
+  /* The Text Indent Is Really Important In Some Cases */
+/*}
+i.fa-graduation-cap {
+  font-size:30px;
+  text-indent:7px
+}
+.rightNav i:after {
+  content:"Jawhar";
+  font: 600 1em/1.6em arial;
+  margin-left:13px;
+  white-space:nowrap;
+}
+.rightNav:hover {
+  width:175px;
+}
+*/
+
+
+
+
+
+/* rightNav Class Has Endded */
+
+
+
+
+
+/*.leftNav i:before {
+  content:"Jawhar";
+  font: 700 20px/1.6em arial, "FontAwesome";
+  margin-right:13px;
+  white-space:nowrap;
+}
+#leftNav {
+  float:right;
+}
+#leftNav .leftNav {
+  width:175px;
+}*/

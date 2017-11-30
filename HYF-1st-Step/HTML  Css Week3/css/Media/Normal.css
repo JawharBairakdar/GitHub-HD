@@ -1,0 +1,171 @@
+._searchingBar {
+  display: block;
+}
+._searchingBar ul.btns {
+  display: block;
+}
+._searchingBar ul.btns li:last-of-type {
+  display: none;
+}
+/* SearchingBar */
+._searchingBar form fieldset {
+  overflow: hidden;
+  margin: 0 0 10px;
+  padding: 0;
+  position: relative;
+}
+._searchingBar form fieldset.adress {
+  width: 49%;
+  float: left
+}
+._searchingBar form fieldset.adress input {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+}
+._searchingBar form fieldset.adress select {
+  position: absolute;
+  width: 100px;
+  right: 0;
+}
+._searchingBar form fieldset.price,
+._searchingBar form fieldset.maxPrice {
+  float: left;
+  width: 20%;
+}
+
+._searchingBar form fieldset.price label,
+._searchingBar form fieldset.maxPrice label {
+  line-height: 42px;
+  width: 20%;
+  text-align: center;
+  background-color: #FFF;
+  display: inline-block;
+  float: left
+}
+._searchingBar form fieldset.price select,
+._searchingBar form fieldset.maxPrice select {
+  width:80%;
+  padding: 5px;
+  float: left
+}
+._searchingBar form > input {
+  width: 8%;
+  color: #FFF;
+  background-color: #0071b3
+}
+form fieldset:nth-of-type(1),
+form fieldset:nth-of-type(2),
+form fieldset:nth-of-type(3)
+{
+  margin-right: 1%
+}
+
+section.firstBox figure {
+  width: 31.3%;
+  margin: 1%;
+  float: left;
+  display: inline-block;
+  overflow: hidden
+}
+section.secondBox {
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+section.secondBox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+section.secondBox .inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(50,50,50,.5);
+}
+section.secondBox .inside h1, section.secondBox .inside button {
+  min-width: 100px;
+  max-width: 200px;
+  min-height: 25px;
+  max-height: 75px;
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  margin: auto auto 10px;
+  padding: 10px;
+  color: white
+}
+section.secondBox .inside div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
+}
+section.secondBox .inside button {
+  background-color: transparent;
+  border: 1px solid #FFF;
+}
+
+
+.thirdBox {
+  position: relative;
+}
+.thirdBox > div {
+  min-width: 375px;
+  max-width: 540px;
+  position: relative;
+  overflow: hidden;
+  float: left
+}
+.thirdBox > div *:not(img) {
+  position:absolute;
+  color: #DDD;
+  padding: 0 10px
+}
+.thirdBox > div h1 {
+  top: 40%;
+}
+.thirdBox > div p {
+  top: 65%
+}
+aside {
+  float: left;
+  width: 0%;
+  min-width: 390px;
+  max-width: 500px;
+  margin: 0;
+  padding: 0
+}
+aside ul li {
+  width: 100%;
+  overflow: hidden;
+  padding: 5px 5px 5px;
+}
+aside ul li img {
+  width: 50px;
+  float: left;
+  margin: 0 5px
+}
+aside ul li p {
+  display: block;
+  margin: 0 10px 15px;
+  font-size: 13px
+}
+aside ul li + li {
+  border-top: 1px solid #DDD;
+}
+
+
+
+
+
+
+
+
+
+
+
+

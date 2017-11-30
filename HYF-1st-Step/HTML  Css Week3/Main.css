@@ -1,0 +1,251 @@
+@import url("css/Media/Medium.css") screen and (max-width: 940px);/* Medium */
+@import url("css/Media/Normal.css") screen and (min-width: 940px);/* Noramal */
+
+/*
+  As Usual So Hurry At It *_*
+*/
+html {
+  font-size: 16px;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Verdana, Helvetica ;
+}
+body {
+  background-color: #E6F2F7;
+}
+img {
+  /*width: 300px;*//* Must Changing That */
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+nav {
+  height: 47px;
+  background-color: #F7A100;
+  border-bottom: #DE9000;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  color:#FFF
+}
+.container {
+  padding: 0;
+  margin: auto;
+  max-width: 1024px;
+  min-width: 375px;
+  overflow: hidden;
+}
+
+
+
+
+nav img {
+  float: left;
+}
+nav ul {
+  float: right;
+}
+nav ul li {
+  border-left: 1px solid #DE9000;
+  border-right: 1px solid #DE9000;
+  padding: 0 20px;
+  margin: 0;
+  line-height: 47px;
+  text-align: center;
+  float: right;
+}
+nav img {
+  height: 45px;
+  padding: 6px
+}
+header div._headerBg {
+  margin: 10px 0;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+  background-position: center center;
+  background-image: url('https://assets.fstatic.nl/master_1428/assets/components/search-banner/images/herenhuis-silhouet.svg');
+}
+header div._headerBg p {
+  position: absolute;
+  width: 50%;
+  left: 100px;
+  top: 50px;
+  font-weight: 500;
+  font-size: 1.5em
+}
+ /* The Header Background */
+._Bg { 
+  display: block;
+  position:relative
+}
+._Bg:after {
+  content: '';
+  position: absolute;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-image: url('https://assets.fstatic.nl/master_1428/assets/components/search-banner/images/herenhuis-rechts.svg');
+  right: 0;
+  top: 10px;
+  width: 35%;
+  height: 200px;
+}
+._Bg:before {
+  content: '';
+  position: absolute;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-image: url('https://assets.fstatic.nl/master_1428/assets/components/search-banner/images/herenhuis-links.svg');
+  left: 0;
+  top: 20px;
+  width: 40%;
+  height: 180px;
+}
+
+/* Practicing */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* Searching Bar */
+._searchingBar {
+  width: 100%;
+  padding: 20px;
+  background-color: #F7A100
+}
+
+._searchingBar ul.btns {
+  width: 100%;
+  height: 50px;
+}
+._searchingBar ul.btns li {
+  float: left;
+  width: 90px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #FFF;
+  margin: 0 1px;
+  background-color: #F7A100
+}
+/* The Searching Bar */
+._searchingBar form {
+  overflow: hidden;
+  width: 100%;
+}
+._searchingBar form fieldset {
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+._searchingBar form fieldset.adress input {
+  padding: 10px;
+  position: absolute;
+}
+._searchingBar form fieldset.adress select {
+  position: absolute;
+  right: 0;
+}
+._searchingBar form fieldset.price label,
+._searchingBar form fieldset.maxPrice label {
+  line-height: 42px;
+  text-align: center;
+  background-color: #FFF;
+  display: inline-block;
+  float: left
+}
+._searchingBar form fieldset.price select,
+._searchingBar form fieldset.maxPrice select {
+  padding: 5px;
+  float: left
+}
+._searchingBar form > input {
+  color: #FFF;
+  background-color: #0071b3
+}
+._searchingBar form fieldset.price select,
+._searchingBar form fieldset.maxPrice select,
+._searchingBar form fieldset.adress *,
+._searchingBar form > input,
+._searchingBar form fieldset {
+  height: 42px;
+  border: none;
+}
+
+
+section.content {
+  margin: 20px
+}
+section.firstBox figure strong {
+  display: block;
+  font: bold 16px/2em sans-serif, verdana;
+  margin-left: 10px
+}
+section.firstBox figure span {
+  font-weight: 600;
+  color: #0073ba;
+  line-height: 18px;
+  display: block
+}
+section {
+  padding: 10px;
+  overflow: hidden
+}
+section img {
+  width: 100%
+}
+
+/* BreadCrump */
+.breadCrump {
+  margin: 10px;
+  width: auto;
+  overflow-x: scroll;
+}
+.breadCrump::-webkit-scrollbar {
+  display: none
+}
+.breadCrump li {
+  float: left;
+  margin-left: 10px;
+}
+.breadCrump li:before {
+  content: '';
+  background-image: url('data:image/svg+xml;charset%3DUS-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Ctitle%20fill%3D%22%230071B3%22%3Earrow-right.colors-white-grey-blue-pink%3C%2Ftitle%3E%3Cpath%20data-name%3D%22Arrow%20Right%22%20d%3D%22M31.56%2022.93L21%2012.34a1.5%201.5%200%200%200-2.12%202.12L28.37%2024l-9.54%209.54A1.5%201.5%200%200%200%2021%2035.66l10.53-10.57a1.52%201.52%200%200%200%200-2.13z%22%20fill%3D%22%230071B3%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  float: left;
+  margin-top: -2px;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+}
+
+footer {
+  background-color: #ededed;
+}
+table {
+  width: 100%
+}
+footer table tr {
+  width: 25%;
+  text-align: center
+}
+footer table tr th {
+  padding: 2px
+}
+footer table tr td {
+  color: #00d;
+  padding: 2px
+}
+
+
+

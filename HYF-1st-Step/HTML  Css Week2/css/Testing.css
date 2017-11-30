@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+li {
+  list-style: none;
+}
+body {
+  margin: 0;
+  padding: 0
+}
+h1 {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+h2 {
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  padding: 0
+}
+/*   */
+body::-webkit-scrollbar {
+  display: none;
+}
+main::-webkit-scrollbar {
+  display: none
+}
+main {
+  margin: auto;
+  width: 1000px;
+  height: 100%;
+  overflow-y: hidden;
+  background-color: #DDD;
+} 
+main section:nth-of-type(2) {
+  height:500px;
+  overflow:hidden;
+  border-top: 1px solid #EEE
+}
+
+/* Start Floating */
+#grid-floats, #grid-flex {
+  margin: 0;
+  padding: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+#grid-floats .grid-item { 
+  padding: 10px;
+  height:400px;
+  float: left;
+}
+/* End Floating */
+#grid-flex {
+  display: flex;
+  width: 500px;
+  height: 1000px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform:  rotate(-90deg) translateY(-500px);
+  transform-origin: top right;
+}
+#grid-flex .grid-item {
+  transform:  rotate(90deg) translateY(100px);
+  height: 400px
+}
+#grid-flex::-webkit-scrollbar {
+  display:none
+}
+.grid-item {
+  height: 500px
+}
+
+/* The Animate */
+li h3 {
+  margin: 0;
+  background-color: #EEE;
+  height: 50px;
+  width: 300px;
+  line-height: 50px;
+  position: relative;
+}
+li img {
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  position: relative;
+  background-color: #FFF;
+  z-index: 2
+}
+li p {
+  margin: 0;
+  padding: 0;
+  width:300px;
+  background-color: #333;
+  color: #FFF;
+  position: relative;
+  top: -120px;
+  transform-origin: top;
+  transition:all .5s ease-in-out;
+  z-index: 1
+}
+li:hover p {
+  top: 0;
+  animation: toUp .7s ease-in-out
+}
+
+@keyframes toUp {
+  0% {
+    transform: rotateX(0deg);
+  }
+  25% {
+    transform: rotateX(50deg);
+  }
+  50% {
+    transform: rotateX(-30deg);
+  }
+  75% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
