@@ -56,7 +56,7 @@ function consoleFives(item) {
 }
 
 // >>>> Q.3 
-// ......The Answers For These Question Are After The Functions
+// ......The Answers For These Questions Are After The Functions
 
 function repeatStringNumTimes(str, num, Func) {
     // repeat after me
