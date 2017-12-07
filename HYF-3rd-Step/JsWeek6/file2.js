@@ -60,8 +60,7 @@ function consoleFives(item) {
 
 function repeatStringNumTimes(str, num, Func) {
     // repeat after me
-    Func(str, num)
-    return str;
+    return Func(str, num);
 }
 // >>>> Q.4 
 function forLoop(str, num) {
