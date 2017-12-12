@@ -1,6 +1,6 @@
 
 // < 06-DEC-2017 >  Homework
-
+"use strict"
 // >>>> Q.1
 
 function foo(func) {
@@ -147,3 +147,29 @@ function sortThemAll(arr) {
 }
 
 console.log(sortThemAll(BONUS))
+
+
+// Jalas Way to do things 
+// Removing dublecated items
+/* 
+let myArray = ['a', 'b', 'c', 'd', 'a', 'e', 'f', 'c'];
+function findDuplicates(array) {
+
+    let uniqeArray = [];
+
+    array.forEach((element, index) => {
+
+        // Find if there is a duplicate or not
+        if (array.indexOf(element, index + 1) === -1) {
+
+            // Find if the element is already in the result array or not
+            if (uniqeArray.indexOf(element) === -1) {
+                uniqeArray.push(element);
+            }
+        }
+    });
+
+    return uniqeArray;
+}
+console.log(findDuplicates(myArray))
+*/
