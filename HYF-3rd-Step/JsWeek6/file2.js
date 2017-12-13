@@ -148,7 +148,7 @@ function sortThemAll(arr) {
 
 console.log(sortThemAll(BONUS))
 
-// How Legends Do Things *_*
+// How Legends Do Things *_* With Set Object
 
 // Or How to use Set
 let set = new Set(BONUS)
