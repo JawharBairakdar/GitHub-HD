@@ -148,6 +148,19 @@ function sortThemAll(arr) {
 
 console.log(sortThemAll(BONUS))
 
+// How Legends Do Things *_*
+
+// Or How to use Set
+let set = new Set(BONUS)
+// for (let i in set){
+//     console.log(set.keys)
+// }
+// // console.log(set instanceof Object)
+console.log(set)  // OMG
+
+
+
+
 
 // Jalas Way to do things 
 // Removing dublecated items
