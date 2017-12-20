@@ -37,10 +37,10 @@ class Movies {
   }
   getRating() {
     this.rating = this.Stars.concat(this.Directors, this.Writers)
-    return this.rating.reduce((sum, val ,x , array) => {
+    return this.rating.reduce((sum, val) => {
       sum += val.Rate
-      return sum / array.length
-    },0)
+      return sum
+    },0) / this.rating.length;
   }
   rate() {
     return this.getRating()
