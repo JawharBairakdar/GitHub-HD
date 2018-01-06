@@ -1,0 +1,300 @@
+<html>
+  <head>
+
+    <style>
+    * {
+      font-family: "times new roman"
+    }
+      .userAvatar {
+        padding: 3px;
+        border: 1px solid #CCC;
+      }
+      .header .userAvatar {
+        width: 200px;
+        height: 200px;
+      }
+      .container {
+        margin: 20px auto;
+        width: 60%;
+      }
+      .header > * {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+      }
+      .header button, .header input {
+        width: 375px;
+        padding: 5px;
+        font-weight: 700;
+        border: transparent;
+        border-bottom: 1px solid #CCC;
+      }
+      .header input {
+        font-size: 1.5em;
+      }
+      .header > .descripBox {
+        border-bottom: 5px solid #ccc;
+      }
+      .header > .descripBox > p {
+        color: #CDCDCD;
+        font-size: .8em
+      }
+      table {
+        border: 1px solid #DDD
+      }
+      th {
+        border-bottom: 1px solid #DDD
+      }
+      td {
+        text-overflow: ellipsis;
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+      }
+      td img {
+        width: 20px;
+        height: 20px;
+        padding: 1px;
+        border: 1px solid #DDD
+      }
+      small {
+        text-align: center;
+        display: block;
+        color: #AAA
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="mainBox">
+
+      <div class="header container">
+        <img src="https://via.placeholder.com/200X200" alt="Default Image" class="userAvatar">
+        <input type="text" placeholder="Please Enter a User Name" maxlength="35">
+        <button>Match</button>
+
+        <!-- <div class="descripBox">
+          <h3>jawhar</h3>
+          <p>BlaBlaBla</p>
+          <! OR THROW AN H1 ERROR >
+        </div> -->
+
+      </div>
+
+
+      <table class="container">
+        <!--<tr>
+          <th>Repository Name</th>
+          <th>Last Commit<! message ></th>
+          <th><! His Lovely Photo ></th>
+          <th>Done By</th>
+          <th>At</th>
+        </tr>-->
+      </table>
+
+    </div><!-- holder -->
+
+
+    <script>
+
+let headerRequest = new XMLHttpRequest
+let reposRequest = new XMLHttpRequest
+let commitsRequest
+
+let mainBox = document.querySelector('#mainBox')
+mainBox.addEventListener('click', mainFunc, false)
+
+function nodeCheck(node) {
+  while (node.hasChildNodes()) {
+    node.removeChild(node.firstChild)
+  }
+} // Removing Child Nodes From Some Where!!
+let descripBox = document.createElement('div')
+descripBox.setAttribute('class', 'descripBox')
+
+function mainFunc(e) {
+  let target = e.target
+  let parent = target.parentNode
+  let GRA_PA = parent.parentNode
+  let input = GRA_PA.querySelector('.header input')
+  if (target === GRA_PA.querySelector('.header button')) {
+    if (input.value) {
+      let i = 0
+      function header() {
+        i++
+        let url = ['https://api.github.com/users']
+        url.push(input.value)
+        headerRequest.open('GET', url.join('/'))
+        headerRequest.send()
+        headerRequest.onreadystatechange = () => {
+          if (headerRequest.readyState === XMLHttpRequest.DONE) {
+            let response = JSON.parse(headerRequest.response)
+            let p = document.createElement('p')
+            let name = document.createElement('h3')
+            let avatar = parent.querySelector('img')
+            nodeCheck(descripBox)
+            // let name = parent.querySelector('h3')
+            p.textContent = response.bio
+            /*
+            <div class="descripBox">
+              <h3>jawhar</h3>
+              <p>BlaBlaBla</p>
+              <!-- OR THROW AN H1 ERROR -->
+            </div>
+            */
+            name.textContent = response.name
+            avatar.src = response.avatar_url
+            avatar.alt = response.login
+            parent.appendChild(descripBox)
+            descripBox.appendChild(name)
+            descripBox.appendChild(p)
+          }
+        } // onreadystatechange
+      } // header()
+      header()
+
+      let table = mainBox.querySelector('table')
+      let r_length = 0
+      let reposRespons
+      function repos() {
+        let url = ['https://api.github.com/users']
+        url.push(input.value, 'repos')
+        fetch(url.join('/')).then(response => {
+          // console.log("Hey this is response",response)
+          //
+          let reposHandler = []
+          reposRequest.onreadystatechange = () => {
+            if (reposRequest.readyState === XMLHttpRequest.DONE) {
+              nodeCheck(table)
+              let tr = document.createElement('tr')
+              let th = document.createElement('th')
+              th.textContent = 'Repository Name'
+              tr.appendChild(th)
+              th = document.createElement('th')
+              th.textContent = 'Last Commit'
+              tr.appendChild(th)
+              th = document.createElement('th')
+              th.textContent = 'Done By'
+              tr.appendChild(th)
+              th = document.createElement('th')
+              th.textContent = ''
+              tr.appendChild(th)
+              th = document.createElement('th')
+              th.textContent = 'At'
+              tr.appendChild(th)
+              table.appendChild(tr)
+              // console.log(reposRequest.response)
+              reposRespons = JSON.parse(reposRequest.response)
+                .map(item => {
+                  tr = document.createElement('tr')
+                  table.appendChild(tr)
+                  let td = document.createElement('td')
+                  td.textContent = item.name
+                  td.setAttribute('class', 'repo')
+                  tr.appendChild(td)
+                  // console.log(item)
+                  reposHandler.push(item.name)
+                })
+            }
+          }
+          reposRequest.open('GET',response.url, false)
+          reposRequest.send()
+          return reposHandler
+        }).then(e => {
+          // console.log("Hey this is response",e)
+          let url
+          let i = 0
+          for (let item of e) {
+            i += 1
+            url = ['https://api.github.com/repos']
+            url.push(input.value, item, 'commits')
+            fetch(url.join('/'))
+                commitsRequest = new XMLHttpRequest
+                commitsRequest.onreadystatechange = () => {
+                  if (commitsRequest.readyState === XMLHttpRequest.DONE) {
+                    let response = JSON.parse(commitsRequest.response)[0]
+                    let commit = response.commit
+                    let msg = commit.message
+                    let committer = response.author.login
+                    let avatar = response.author.avatar_url
+                    let at = commit.committer.date
+                    let tr = table.querySelectorAll('tr')
+                    let td = document.createElement('td')
+                    let text = document.createTextNode(msg)
+                    td.appendChild(text)
+                    tr[i].appendChild(td)
+                    td = document.createElement('td')
+                    text = document.createTextNode(committer)
+                    td.appendChild(text)
+                    tr[i].appendChild(td)
+                    td = document.createElement('td')
+                    let image = document.createElement('img')
+                    image.src = avatar
+                    td.appendChild(image)
+                    tr[i].appendChild(td)
+                    td = document.createElement('td')
+                    text = document.createTextNode(new Date(at).toDateString())
+                    td.appendChild(text)
+                    tr[i].appendChild(td)
+                    // console.log(avatar)
+                  }
+                }
+                commitsRequest.open('GET', url.join('/'), false)
+                commitsRequest.send()
+                // console.log(commitsRequest)
+          }
+
+
+          // e.forEach(item => {
+          //       console.log(item)
+          //       if (table.querySelector('td.repo')) {
+          //         let td = document.createElement('td')
+          //       }
+          //     }
+          // })
+          let bug = document.createElement('small')
+          bug.textContent = 'This Is Not A Bug\nThis is A Feature'
+          document.body.appendChild(bug)
+        })
+      }
+      repos()
+      // console.log(reposRequest)
+      // let reposhandler = []
+      // function commits(repo) {
+      //   reposhandler.push(repo)
+      //     // console.log(item)
+      //   // let commitTag = document.createElement(td)
+      //   // console.log(r_length)
+      //   // for (let i = 0; i < r_length; i++) {
+      //   //   // console.log(reposRespons)
+      //   // }
+      // }
+    } // input empty checking
+  } // button selector
+} // mainFunc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+  </body>
+</html>

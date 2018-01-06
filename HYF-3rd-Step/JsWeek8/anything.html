@@ -1,0 +1,215 @@
+<html>
+  <head>
+
+    <style>
+    * {
+      font-family: "times new roman"
+    }
+      .userAvatar {
+        padding: 3px;
+        border: 1px solid #CCC;
+      }
+      .header .userAvatar {
+        width: 200px;
+        height: 200px;
+      }
+      .container {
+        margin: 20px auto;
+        width: 60%;
+      }
+      .header > * {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+      }
+      .header button, .header input {
+        width: 375px;
+        padding: 5px;
+        font-weight: 700;
+        border: transparent;
+        border-bottom: 1px solid #CCC;
+      }
+      .header input {
+        font-size: 1.5em;
+      }
+      .header > .descripBox {
+        border-bottom: 5px solid #ccc;
+      }
+      .header > .descripBox > p {
+        color: #CDCDCD;
+        font-size: .8em
+      }
+      table {
+        border: 1px solid #DDD
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="mainBox">
+
+      <div class="header container">
+        <img src="https://via.placeholder.com/200X200" alt="Default Image" class="userAvatar">
+        <input type="text" placeholder="Please Enter a User Name" maxlength="35">
+        <button>Match</button>
+
+        <div class="descripBox">
+          <h3>jawhar</h3>
+          <p>BlaBlaBla</p>
+          <!-- OR THROW AN H1 ERROR -->
+        </div>
+
+      </div>
+
+
+      <table class="container">
+        <tr>
+          <th>Repository Name</th>
+          <th>Last Commit<!-- message --></th>
+          <th><!-- His Lovely Photo --></th>
+          <th>Done By</th>
+          <th>At</th>
+        </tr>
+
+      </table>
+
+    </div><!-- holder -->
+
+
+    <script>
+    const mainBox = document.getElementById('mainBox')
+    function eve(e) {
+      const TARGET = e.target
+      const PARENT = TARGET.parentNode
+      const GRA_PA = PARENT.parentNode
+      const USER_MATCH = new XMLHttpRequest()
+      const REPO_MATCH = new XMLHttpRequest()
+      let commitMatch
+      function matcher(userName, type, repo, user = use, password = pass) {
+        const url = ["https://api.github.com/users"]
+        const commits = ["https://api.github.com/repos"]
+        switch (type) {
+          case 0:
+            url.push(userName, "repos")
+            REPO_MATCH.open('GET', url.join("/"), true)
+            REPO_MATCH.send()
+            break;
+          case 1:
+            commitMatch = new XMLHttpRequest()
+            commits.push(userName, repo, "commits")
+            commitMatch.open('GET', commits.join("/"), false)
+            commitMatch.send()
+            break;
+          default:
+            url.push(userName)
+            USER_MATCH.open('GET', url.join('/'), true)
+            USER_MATCH.send()
+        }
+      } // matcher()
+      function nodeCheck(node) {
+                while (node.hasChildNodes()) {
+                  node.removeChild(node.firstChild)
+                }
+              } // Removing Child Nodes From Some Where!!
+
+      if (TARGET.tagName === 'BUTTON') {
+        const INPUT = mainBox.querySelector('input').value
+        if (INPUT) {
+          matcher(INPUT)
+          matcher(INPUT,0)
+          USER_MATCH.onreadystatechange = () => {
+            if (USER_MATCH.readyState === XMLHttpRequest.DONE) {
+              // console.log("this is a user match",USER_MATCH)
+              const ORIGIN_DBOX = mainBox.querySelector('.descripBox')
+              nodeCheck(ORIGIN_DBOX) // Removing Child Nodes From ORIGIN_DBOX!!
+              let userAvatar = PARENT.querySelector('.userAvatar')
+              let userResponse = JSON.parse(USER_MATCH.response)
+              userAvatar.src = userResponse.avatar_url
+              userAvatar.alt = userResponse.login
+              let h3 = document.createElement('h3')
+              h3.textContent = userResponse.name
+              ORIGIN_DBOX.appendChild(h3)
+              if(userResponse.bio) {
+                let p = document.createElement('p')
+                p.textContent = userResponse.bio
+                ORIGIN_DBOX.appendChild(p)
+              } // End (bio) If Statment
+            } // End (USER_MATCH.readyState) If Statment
+          }
+          REPO_MATCH.onreadystatechange = () => {
+            if (REPO_MATCH.readyState === XMLHttpRequest.DONE) {
+              let repoResponse = JSON.parse(REPO_MATCH.response)
+              const REPO_TABLE = GRA_PA.querySelector('table')
+              nodeCheck(REPO_TABLE)
+              // console.log(repoResponse)
+              repoResponse.map(item => {
+                matcher(INPUT, 1, item.name)
+                let tr = document.createElement('tr')
+                REPO_TABLE.appendChild(tr)
+                let name = document.createElement('td')
+                name.textContent = item.name
+                // let lastCommit = document.createElement('td')
+                // lastCommit.textContent = container.response
+                // console.log(container)
+                tr.appendChild(name)
+                // tr.appendChild(lastCommit)
+
+              })
+            }
+          }
+
+            // repos.map(item => {
+            // })
+            // console.log(repos)
+            // let repoName = REPO_TABLE.querySelectorAll('.repoName')
+            // console.log(repoName.children)
+            // for (let i = 0; i < repoName.length; i++) {
+            //   console.log(commitMatch.response)
+            // }
+            // repoName.forEach(item => {
+            //   commitMatch.onreadystatechange = () => {
+            //     if (commitMatch.readyState === XMLHttpRequest.DONE) {
+            //       console.log(commitMatch)
+            //     }
+            //   }
+            // })
+        } else {
+          console.log("Hey stupid Insert Something!!")
+        }
+
+      }
+
+    } //  eve()
+
+    mainBox.addEventListener('click', eve, false)
+
+
+    </script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- // const userResponse = JSON.parse(USER_MATCH.responseText)
+// const ORIGIN_REPO_RESPONSE = JSON.parse(REPO_MATCH.responseText) -->

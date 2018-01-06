@@ -1,0 +1,31 @@
+div#magicBox {
+  margin: 100px auto;
+  width: 250px;
+  overflow: hidden;
+  padding: 0
+}
+div.aside * {
+  display: block;
+  text-align: center;
+  margin: 10px auto
+}
+div.aside input {
+  border: none;
+  padding: 5px;
+  width: 100%;
+  border-bottom: 1px solid #CCC;
+}
+/* Styling the text Input */
+div.aside input[type="text"] {
+  font-size: 1em;
+  font-weight: 900;
+  font-style: "Times New Roman Bold";
+}
+h3 {
+  margin: auto;
+  width: 400px;
+}
+img {
+  padding: 3px;
+  border: 1px solid #CCC;
+}
