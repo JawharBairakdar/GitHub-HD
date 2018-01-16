@@ -1,0 +1,82 @@
+
+<html>
+<head>
+</head>
+<body>
+<script>
+
+let userInput = document.createElement("input");
+let submitButton = document.createElement("button");
+let containerDiv = document.createElement("div");
+
+document.body.appendChild(userInput);
+document.body.appendChild(submitButton);
+document.body.appendChild(containerDiv)
+
+submitButton.onclick = () => run(userInput.value);
+
+let run = ( username ) => {
+    document.body.removeChild(containerDiv);
+    containerDiv = document.createElement("div");
+    document.body.appendChild(containerDiv);
+    makeGetRequest("https://api.github.com/users/" + username)
+        .then( (userData) => makeGetRequest(userData.repos_url) )
+        .then( (reposData) => reposData.forEach( (n) => {
+            let thisRepo = {
+                name: n.name,
+                lastCommitter: {}
+            };
+
+            makeGetRequest(n.commits_url.replace("{/sha}", "")).then( (commitsData) => {
+                thisRepo.lastCommitter.name = commitsData[0].committer.login;
+                thisRepo.lastCommitter.avatar_url = commitsData[0].committer.avatar_url;
+
+                placeElementOnPage(thisRepo);
+            })
+        }))
+}
+
+let makeGetRequest = ( url, callbackParam ) => {
+    let request = new XMLHttpRequest();
+
+    let finishRequest = (successCallback, failureCallback) => {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+                successCallback(JSON.parse(request.responseText));
+            } else {
+                console.log(`Oh no, the response code was not 200 - it was ${ request.status }.`);
+                failureCallback(request.responseText);
+            }
+        }
+    };
+
+    request.open("GET", url);
+
+    if (typeof callbackParam === 'function') {
+        request.onreadystatechange = () => finishRequest(callbackParam, console.error);
+        request.send();
+    } else {
+        return new Promise( (resolve, reject) => {
+            request.onreadystatechange = () => finishRequest(resolve, reject);
+            request.send();
+        });
+    }
+}
+
+let placeElementOnPage = (repoData) => {
+    let h2 = document.createElement("h2");
+    h2.innerHTML = repoData.name;
+    let h3 = document.createElement("h3");
+    h3.innerHTML = repoData.lastCommitter.name;
+    let img = document.createElement("img");
+    img.width = 100;
+    img.src = repoData.lastCommitter.avatar_url;
+
+    containerDiv.appendChild(h2);
+    containerDiv.appendChild(h3);
+    containerDiv.appendChild(img);
+
+};
+</script>
+</body>
+</html>

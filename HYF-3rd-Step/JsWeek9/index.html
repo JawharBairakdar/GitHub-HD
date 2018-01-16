@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      font-family: "times new roman"
+    }
+    .userAvatar {
+      padding: 3px;
+      border: 1px solid #CCC;
+    }
+  
+    .header .userAvatar {
+      width: 200px;
+      height: 200px;
+    }
+  
+    .container {
+      margin: 20px auto;
+      width: 60%;
+    }
+  
+    .header>* {
+      display: block;
+      text-align: center;
+      margin: 10px auto;
+    }
+  
+    .header button,
+    .header input{
+      width: 375px;
+      padding: 5px;
+      font-weight: 700;
+      border: transparent;
+      border-bottom: 1px solid #CCC;
+    }
+  
+    .header input:not(.normal) {
+      font-size: 1.5em;
+    }
+  
+    .header>.descripBox {
+      border-bottom: 5px solid #ccc;
+    }
+  
+    .header>.descripBox>p {
+      color: #CDCDCD;
+      font-size: .8em
+    }
+  
+    table {
+      border: 1px solid #DDD
+    }
+  
+    th {
+      border-bottom: 1px solid #DDD
+    }
+  
+    td {
+      text-overflow: ellipsis;
+      max-width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-align: center;
+    }
+  
+    td img {
+      width: 20px;
+      height: 20px;
+      padding: 1px;
+      border: 1px solid #DDD
+    }
+  
+    small {
+      text-align: center;
+      display: block;
+      color: #AAA
+    }
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="mainBox">
+  
+    <div class="header container">
+      <img src="https://via.placeholder.com/200X200" alt="Default Image" class="userAvatar">
+      <input type="text" placeholder="Please Enter a User Name" maxlength="35">
+      <input type="text" class="normal" placeholder="Please Enter your GitHub User Name">
+      <input type="password" class="normal" placeholder="Please Enter your GitHub token Or password">
+      <button>Match</button>
+  
+      <div class="descripBox hide">
+      </div>
+    </div>
+  
+    <table class="container">
+    </table>
+  
+  </div>
+  <!-- holder -->
+
+  <script src="index.js"></script>
+</body>
+</html>
